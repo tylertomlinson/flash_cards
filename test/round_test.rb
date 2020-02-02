@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require_relative 'test_helper'
 require './lib/card'
 require './lib/turn'
 require './lib/deck'
@@ -19,30 +18,37 @@ class RoundTest < Minitest::Test
     assert_instance_of Round, @round
   end
 
-  def test_the_round_has_a_deck
+  def test_the_round_has_a_deck_with_cards
     assert_equal @deck, @round.deck
+    assert_equal 3, @round.size_of_deck
+    assert_instance_of Card, @round.deck.cards.first
   end
 
   def test_round_starts_with_zero_turns
     assert_equal [], @round.turns
   end
 
-  def test_current_card_is_correct
+  def test_current_card_is_correct_and_in_the_right_position
     assert_equal @card_1, @round.current_card
+    assert_equal 1, @round.current_card_index
+
     @round.take_turn("Juneau")
     assert_equal @card_2, @round.current_card
+    assert_equal 2, @round.current_card_index
   end
 
   def test_turn_is_created
     assert_instance_of Turn, @round.take_turn("Juneau")
   end
 
-  def test_round_can_take_multiple_turns
+  def test_round_can_take_multiple_turns_and_feedback_is_correct
     @round.take_turn("Juneau")
     assert_equal @card_2, @round.current_card
+    assert_equal "Correct!", @round.answer_feedback
 
     @round.take_turn("Venus")
     assert_equal @card_3, @round.current_card
+    assert_equal "Incorrect!", @round.answer_feedback
   end
 
   def test_round_number_correct_by_category
