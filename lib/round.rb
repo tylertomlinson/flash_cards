@@ -46,6 +46,7 @@ class Round
     until self.current_card == nil
     puts "This is card number #{self.current_card} out of #{@deck.count}"
     puts self.current_card.question
+    #need to have format of user response have correct formatting when comparing to answer.
     user_guess = gets.chomp.to_s
     self.take_turn(user_guess)
     puts "Your answer is: #{@turns.last.feedback}"
@@ -59,7 +60,6 @@ class Round
     puts "Sports - #{self.percent_correct_by_category(:Sports)}% correct"
     puts "Entertainment - #{self.percent_correct_by_category(:Entertainment
     )}% correct"
-
   end
 
 end
