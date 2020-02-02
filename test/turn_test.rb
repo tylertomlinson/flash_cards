@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require_relative 'test_helper'
 require './lib/card'
 require './lib/turn'
 
@@ -22,21 +21,40 @@ class TurnTest < Minitest::Test
     assert_equal "Juneau", @turn.guess
   end
 
-  def test_guess_is_correct_and_incorrect
+  def test_user_guess_is_correct_and_incorrect
     assert @turn.correct?
 
-    @card_1 = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
-    @turn_1 = Turn.new("Saturn", @card_1)
+    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
+    turn = Turn.new("Saturn", card)
 
-    refute @turn_1.correct?
+    refute turn.correct?
   end
 
-  def test_can_give_feedback
+  def test_turn_can_give_feedback_to_user
     assert_equal "Correct!", @turn.feedback
 
-    @card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
-    @turn = Turn.new("Saturn", @card)
+    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
+    turn = Turn.new("Saturn", card)
 
-    assert_equal "Incorrect!", @turn.feedback
+    assert_equal "Incorrect!", turn.feedback
+  end
+
+  def test_user_can_input_different_acceptable_answers
+    # assert_equal "juneau",
+    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
+    turn = Turn.new("mercury", card)
+
+    assert turn.correct?
+
+    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
+    turn = Turn.new("  MerCury", card)
+
+    assert turn.correct?
+      #Donald Trump = donald trump
+      #DoNald Trump
+      #   Donald Trump
+      #donald trump
+
+      #user inputs donald trump and the feedback is correct
   end
 end
