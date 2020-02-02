@@ -51,8 +51,15 @@ class Round
     puts "Your answer is: #{@turns.last.feedback}"
     end
 
-    puts "------------- Game over! -------------"
+    puts "------------- Game over! -------------" + "\n\n"
+
     puts "You had #{self.number_correct} correct answers out of #{@deck.count} for a total score of #{self.percent_correct.to_i}%"
+
+    puts "History - #{self.percent_correct_by_category(:History)}% correct"
+    puts "Sports - #{self.percent_correct_by_category(:Sports)}% correct"
+    puts "Entertainment - #{self.percent_correct_by_category(:Entertainment
+    )}% correct"
+
   end
 
 end
