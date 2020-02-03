@@ -2,13 +2,9 @@ require './lib/card'
 require './lib/turn'
 require './lib/deck'
 require './lib/round'
+require './lib/card_generator'
 
-@card1 = Card.new("Who is the current President of the United States?", "Donald Trump", :History)
-@card2 = Card.new("How many professional major golf championships has Tiger Woods won?", "18", :Sports)
-@card3 = Card.new("How many cards are in a playing deck?", "52", :Entertainment)
-
-
-@cards = [@card1, @card2, @card3]
+@cards = CardGenerator.new("cards.txt").cards
 @deck = Deck.new(@cards)
 @round = Round.new(@deck)
 
