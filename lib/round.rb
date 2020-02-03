@@ -1,5 +1,4 @@
 class Round
-
   attr_reader :deck, :turns
 
   def initialize(deck)
@@ -30,7 +29,7 @@ class Round
   end
 
   def percent_correct_by_category(category)
-    total_in_category = @turns.count { |turn| turn.card.category == category}
+    total_in_category = @turns.count {|turn| turn.card.category == category}
     (number_correct_by_category(category).to_f / total_in_category) * 100
   end
 
@@ -50,15 +49,15 @@ class Round
     puts "Welcome! You are playing with #{size_of_deck} cards." + "\n\n"
     puts "-=-=-=-=-=-=-GOOD LUCK-=-=-=-=-=-=-" + "\n\n"
 
-    until current_card == nil
-    puts "--------------------------------------" + "\n"
-    puts "This is card number #{current_card_index} out of #{size_of_deck}" + "\n"
-    puts "\n" + current_card.question
+      until current_card == nil
+        puts "--------------------------------------" + "\n"
+        puts "This is card number #{current_card_index} out of #{size_of_deck}" + "\n"
+        puts "\n" + current_card.question
 
-    user_guess = gets.chomp
-    take_turn(user_guess)
-    puts "Your answer is: #{answer_feedback}"
-    end
+        user_guess = gets.chomp
+        take_turn(user_guess)
+        puts "Your answer is: #{answer_feedback}"
+      end
 
     puts "\n\n" "-=-=-=-=-=-=- Game over! -=-=-=-=-=-=-" + "\n\n"
     puts "Press ENTER to see results"
