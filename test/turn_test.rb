@@ -40,7 +40,6 @@ class TurnTest < Minitest::Test
   end
 
   def test_user_can_input_different_acceptable_answers
-    # assert_equal "juneau",
     card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
     turn = Turn.new("mercury", card)
 
@@ -50,11 +49,5 @@ class TurnTest < Minitest::Test
     turn = Turn.new("  MerCury", card)
 
     assert turn.correct?
-      #Donald Trump = donald trump
-      #DoNald Trump
-      #   Donald Trump
-      #donald trump
-
-      #user inputs donald trump and the feedback is correct
   end
 end
