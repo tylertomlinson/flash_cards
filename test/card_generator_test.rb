@@ -17,9 +17,11 @@ class CardGeneratorTest < Minitest::Test
   end
 
   def test_cards_have_questions_answers_and_category
-    skip
-    assert_equal "The citadel Machu Picchu is located in which Latin American Country?", @card_generator.card.question
-    assert_equal "Peru", @CardGenerator.card.answer
-    assert_equal "World Hisotry", @card_generator.card.category
+
+    card = cardgenerator.cards[0]
+    assert_equal "The citadel Machu Picchu is located in which Latin American Country?", card.question
+    assert_equal "Peru", card.answer
+    assert_equal "World History", card.category
+    assert_instance_of Card, card
   end
 end
