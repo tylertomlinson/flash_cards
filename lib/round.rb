@@ -30,7 +30,7 @@ class Round
 
   def percent_correct_by_category(category)
     total_in_category = @turns.count {|turn| turn.card.category == category}
-    (number_correct_by_category(category).to_f / total_in_category) * 100
+    (number_correct_by_category(category).to_f / total_in_category).round(2) * 100
   end
 
   def current_card_index
