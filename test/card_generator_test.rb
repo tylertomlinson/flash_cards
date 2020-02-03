@@ -13,6 +13,6 @@ class CardGeneratorTest < Minitest::Test
   end
 
   def test_it_creates_cards
-    assert_equal 3, @cardgenerator.cards.count
+    assert_equal 10, @cardgenerator.cards.count
   end
 end
