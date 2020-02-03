@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require_relative 'test_helper'
 require './lib/card'
 require './lib/deck'
 
@@ -22,7 +21,7 @@ class DeckTest < Minitest::Test
   end
 
   def test_cards_can_be_counted
-    assert_equal @cards, @cards.count
+    assert_equal 3, @cards.count
   end
 
   def test_cards_in_category
